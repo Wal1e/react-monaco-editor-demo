@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useEffect, useRef, useState } from 'react';
+import MonacoEditor from 'react-monaco-editor';
 function App() {
+  const options = {
+    selectOnLineNumbers: true
+  };
+  const [code, setCode] = useState('test')
+  const editorDidMount = (editor, monaco) => {
+    setCode('console.log("hello react-monaco-editor")')
+    console.log('editorDidMount', editor);
+    editor.focus();
+  }
+  const onChange = (newValue, e) => {
+    console.log('onChange', newValue, e);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MonacoEditor
+        width="800"
+        height="600"
+        language="javascript"
+        theme="vs-light"
+        value={code}
+        options={options}
+        onChange={onChange}
+        editorDidMount={editorDidMount}
+      />
     </div>
   );
 }

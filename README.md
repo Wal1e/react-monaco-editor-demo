@@ -39,6 +39,8 @@ module.exports = function override(config, env) {
 还有不要直接使用monaco-editro，要使用react-monaco-editro
 ### 参考链接
 
-[https://www.npmjs.com/package/monaco-editor-webpack-plugin](https://www.npmjs.com/package/monaco-editor-webpack-plugin)
-[https://www.npmjs.com/package/react-monaco-editor/v/0.45.0](https://www.npmjs.com/package/react-monaco-editor/v/0.45.0)
+[https://www.npmjs.com/package/monaco-editor-webpack-plugin](https://www.npmjs.com/package/monaco-editor-webpack-plugin).
+
+[https://www.npmjs.com/package/react-monaco-editor/v/0.45.0](https://www.npmjs.com/package/react-monaco-editor/v/0.45.0).
+
 [https://www.npmjs.com/package/monaco-editor/v/0.27.0](https://www.npmjs.com/package/monaco-editor/v/0.27.0)
