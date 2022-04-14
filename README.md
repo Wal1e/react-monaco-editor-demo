@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Getting Started with react-monaco-editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
+基于react-monaco-editor库构建在线代码编辑器 [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor).
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
+### Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To learn React [react-monaco-editor](https://github.com/react-monaco-editor/react-monaco-editor).
 
-### Code Splitting
+### 代码高亮的问题
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+这里需要修改webpack的配置，由于这个demo是用creat-react-app脚手架创建的，不会有webpck的配置项（其实复杂的配置被封装了起来， 对项目的启动是通过react-scripts实现的）
+网上有很多修改webpack配置方式，比如npm run eject弹出webpack配置文件进行修改‘、使用react-app-rewired修改、使用craco（Create React App Configuration Override）配置等
+该项目使用饿了react-app-rewired进行修改
+1.安装react-app-rewired， 在根目录新建config-overrides.js
+2.安装monaco-editor-webpack-plugin，修改配置
+```javascript
 
-### Analyzing the Bundle Size
+module.exports = function override(config, env) {
+  config.plugins.push(
+    new MonacoWebpackPlugin({
+      languages: ['apex', 'azcli', 'bat', 'clojure', 'coffee', 'cpp', 'csharp', 'csp', 'css', 'dockerfile', 'fsharp', 'go', 'handlebars', 'html', 'ini', 'java', 'javascript', 'json', 'less', 'lua', 'markdown', 'msdax', 'mysql', 'objective', 'perl', 'pgsql', 'php', 'postiats', 'powerquery', 'powershell', 'pug', 'python', 'r', 'razor', 'redis', 'redshift', 'ruby', 'rust', 'sb', 'scheme', 'scss', 'shell', 'solidity', 'sql', 'st', 'swift', 'typescript', 'vb', 'xml', 'yaml']
+    }),
+  );
+  return config;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+### 可能遇到的版本不匹配问题
 
-### Making a Progressive Web App
+项目刚开始安装依赖包的时候，默认都是install最新的，并没有进行版本管理，后来一直有版本不匹配的问题，具体折腾的细节就不详述了，反正各种版本都大致看看了，具体在最后的参考链接
+"monaco-editor-webpack-plugin@4.1.2" 与 "monaco-editor@0.27.0"
+还有不要直接使用monaco-editro，要使用react-monaco-editro
+### 参考链接
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[https://www.npmjs.com/package/monaco-editor-webpack-plugin](https://www.npmjs.com/package/monaco-editor-webpack-plugin)
+[https://www.npmjs.com/package/react-monaco-editor/v/0.45.0](https://www.npmjs.com/package/react-monaco-editor/v/0.45.0)
+[https://www.npmjs.com/package/monaco-editor/v/0.27.0](https://www.npmjs.com/package/monaco-editor/v/0.27.0)
