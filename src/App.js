@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import MonacoEditor from 'react-monaco-editor';
 function App() {
   const options = {
-    selectOnLineNumbers: true
+    selectOnLineNumbers: true,
+    readOnly: false
   };
   const [code, setCode] = useState('test')
   const editorDidMount = (editor, monaco) => {
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       <MonacoEditor
         width="800"
-        height="600"
+        height="800"
         language="javascript"
         theme="vs-light"
         value={code}

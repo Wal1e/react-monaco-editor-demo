@@ -6,6 +6,8 @@
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+可用在线代码编辑器复制本地代码看效果
+![monaco-demo](https://i.postimg.cc/cHD6Rxvh/monaco-demo.png)
 
 ### Learn More
 
